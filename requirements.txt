@@ -1,0 +1,2 @@
+# Runtime dependencies for issue-codex-automation
+# MVP uses stdlib only - no external dependencies required
