@@ -1,0 +1,5 @@
+{"file": ".trellis/spec/backend/error-handling.md", "reason": "Verify failure cases are handled deliberately."}
+{"file": ".trellis/spec/backend/logging-guidelines.md", "reason": "Verify CLI output/logging is useful without leaking secrets."}
+{"file": ".trellis/spec/backend/quality-guidelines.md", "reason": "Verify implementation and tests meet project quality expectations."}
+{"file": ".trellis/tasks/06-04-issue-codex-automation/research/github-issues-api.md", "reason": "Verify issue fetching, PR filtering, label gating, and state behavior."}
+{"file": ".trellis/tasks/06-04-issue-codex-automation/research/codex-cli-boundary.md", "reason": "Verify safe-mode Codex command generation and non-execution boundary."}

@@ -1,0 +1,6 @@
+{"file": ".trellis/spec/backend/directory-structure.md", "reason": "Python script/package placement and backend file organization guidance."}
+{"file": ".trellis/spec/backend/error-handling.md", "reason": "Error handling expectations for CLI/network/state failures."}
+{"file": ".trellis/spec/backend/logging-guidelines.md", "reason": "Logging/output expectations for script execution and diagnostics."}
+{"file": ".trellis/spec/backend/quality-guidelines.md", "reason": "Quality bar for Python backend-style implementation."}
+{"file": ".trellis/tasks/06-04-issue-codex-automation/research/github-issues-api.md", "reason": "GitHub Issues API behavior, filtering, state, and edge cases."}
+{"file": ".trellis/tasks/06-04-issue-codex-automation/research/codex-cli-boundary.md", "reason": "Local Codex CLI command boundary and safe-mode behavior."}
