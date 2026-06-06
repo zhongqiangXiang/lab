@@ -71,3 +71,36 @@ Created comprehensive Chinese translation (README.zh-CN.md) with language switch
 ### Next Steps
 
 - None - task complete
+
+
+## Session 3: React + Spring Boot Hello Demo
+
+**Date**: 2026-06-06
+**Task**: React + Spring Boot Hello Demo
+**Branch**: `main`
+
+### Summary
+
+Implemented minimal frontend/backend separated demo with Spring Boot API (GET /api/hello) and Vite + React frontend. Updated README with setup instructions and troubleshooting guide.
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `5d34456` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
