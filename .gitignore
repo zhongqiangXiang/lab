@@ -42,6 +42,13 @@ env/
 # State directory (default)
 .codex_issue_agent/
 
+# Project management and AI context
+.agents/
+.claude/
+.codex/
+.trellis/
+AGENTS.md
+
 # OS files
 .DS_Store
 Thumbs.db
