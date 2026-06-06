@@ -14,6 +14,94 @@ GitHub issue-driven Codex automation tool for safe, controlled code generation f
 - Local state tracking to avoid duplicate processing
 - Built with stdlib only (no external dependencies)
 
+## React + Spring Boot Hello Demo
+
+This repository also includes a minimal frontend/backend separated Hello Demo:
+
+```text
+backend/   # Spring Boot 3.x + Maven API service
+frontend/  # Vite + React + TypeScript web app
+```
+
+The backend serves `GET /api/hello` on `http://localhost:8080` and returns:
+
+```json
+{
+  "message": "hello"
+}
+```
+
+The frontend runs on `http://localhost:5173`, requests `/api/hello` when the page loads, and uses the Vite dev proxy to forward `/api` requests to `http://localhost:8080`.
+
+### Demo Environment Requirements
+
+- Java 25
+- Maven 3.9+
+- npm 11.14.1
+- Node.js compatible with the selected Vite version
+
+### Backend Commands
+
+```bash
+cd backend
+
+# Download dependencies and run tests
+mvn test
+
+# Start the backend API on http://localhost:8080
+mvn spring-boot:run
+```
+
+After the backend starts, verify the API:
+
+```bash
+curl http://localhost:8080/api/hello
+```
+
+Expected response:
+
+```json
+{"message":"hello"}
+```
+
+### Frontend Commands
+
+Open a second terminal:
+
+```bash
+cd frontend
+
+# Install dependencies
+npm install
+
+# Start Vite on http://localhost:5173
+npm run dev
+```
+
+Then open `http://localhost:5173` in a browser. With the backend running, the page displays `hello`.
+
+To create a production build:
+
+```bash
+cd frontend
+npm run build
+```
+
+### Demo Troubleshooting
+
+If port `8080` is already in use, stop the process using that port before starting the backend, or run Spring Boot with a different port:
+
+```bash
+cd backend
+mvn spring-boot:run -Dspring-boot.run.arguments=--server.port=8081
+```
+
+If you change the backend port, update `frontend/vite.config.ts` so the `/api` proxy points to the same backend URL.
+
+If port `5173` is already in use, Vite may offer another port in the terminal. Use the URL printed by `npm run dev`.
+
+If the frontend is open while the backend is stopped, the page displays a basic error state because `/api/hello` cannot be loaded through the proxy. Start the backend and refresh the page.
+
 ## Installation
 
 ```bash

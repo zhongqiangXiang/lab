@@ -23,6 +23,16 @@ share/python-wheels/
 .installed.cfg
 *.egg
 
+# Java / Maven
+target/
+
+# JavaScript / Vite
+node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/node_modules/
+frontend/node_modules/.tmp/
+
 # Virtual environments
 venv/
 ENV/
