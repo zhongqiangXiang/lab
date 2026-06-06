@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "test": "npm run test:compile && node --test test/*.test.mjs",
+    "test:compile": "tsc --target ES2022 --module ES2022 --moduleResolution Bundler --lib ES2022,DOM --skipLibCheck --outDir .tmp/test-dist src/helloApi.ts",
     "build": "tsc -b && vite build",
     "preview": "vite preview"
   },

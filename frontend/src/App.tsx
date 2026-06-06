@@ -1,26 +1,14 @@
 import { useEffect, useState } from 'react';
-
-type HelloResponse = {
-  message: string;
-};
+import { fetchHello } from './helloApi';
 
 type RequestState =
+  | { status: 'idle' }
   | { status: 'loading' }
   | { status: 'success'; message: string }
   | { status: 'error'; error: string };
 
-async function fetchHello(signal: AbortSignal): Promise<HelloResponse> {
-  const response = await fetch('/api/hello', { signal });
-
-  if (!response.ok) {
-    throw new Error(`Backend returned HTTP ${response.status}`);
-  }
-
-  return response.json() as Promise<HelloResponse>;
-}
-
 export default function App() {
-  const [requestState, setRequestState] = useState<RequestState>({ status: 'loading' });
+  const [requestState, setRequestState] = useState<RequestState>({ status: 'idle' });
 
   useEffect(() => {
     const controller = new AbortController();
@@ -45,11 +33,42 @@ export default function App() {
     };
   }, []);
 
+  const retry = () => {
+    const controller = new AbortController();
+
+    setRequestState({ status: 'loading' });
+
+    fetchHello(controller.signal)
+      .then((data) => {
+        setRequestState({ status: 'success', message: data.message });
+      })
+      .catch((error: unknown) => {
+        const message = error instanceof Error ? error.message : 'Unknown request failure';
+        setRequestState({ status: 'error', error: message });
+      });
+  };
+
   return (
     <main className="page-shell">
       <section className="hello-panel" aria-live="polite">
-        <p className="eyebrow">React + Spring Boot</p>
-        <h1>Hello Demo</h1>
+        <div className="panel-header">
+          <p className="eyebrow">React + Spring Boot</p>
+          <h1>Hello World Demo</h1>
+          <p className="intro">
+            Frontend page at <code>/hello-world</code>, backend API at <code>/api/hello</code>.
+          </p>
+        </div>
+
+        <div className="api-card">
+          <div>
+            <span className="label">GET</span>
+            <code>/api/hello</code>
+          </div>
+
+          <button type="button" onClick={retry} disabled={requestState.status === 'loading'}>
+            Retry
+          </button>
+        </div>
 
         {requestState.status === 'loading' && (
           <p className="status-message">Loading hello message from the backend...</p>
@@ -59,6 +78,10 @@ export default function App() {
           <p className="hello-message" data-testid="hello-message">
             {requestState.message}
           </p>
+        )}
+
+        {requestState.status === 'idle' && (
+          <p className="status-message">Ready to load the backend hello message.</p>
         )}
 
         {requestState.status === 'error' && (
