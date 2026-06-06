@@ -1,5 +1,7 @@
 # issue-codex-automation
 
+English | [简体中文](README.zh-CN.md)
+
 GitHub issue-driven Codex automation tool for safe, controlled code generation from repository issues.
 
 ## Overview
